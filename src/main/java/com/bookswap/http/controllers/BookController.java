@@ -18,7 +18,7 @@ public class BookController {
 
     @PostMapping("/account/{accountId}/books")
     public ResponseEntity<Void> createBook(@RequestBody Book book, @PathVariable("accountId") String accountId){
-        var newBook = bookService.createBook(book);
+        var newBook = bookService.createBook(book, accountId);
         return ResponseEntity.created(getBookResourceURI(newBook.getId())).build();
     }
 
@@ -30,6 +30,11 @@ public class BookController {
     @GetMapping("/books")
     public List<Book> getAllBooks(){
         return bookService.getBooks();
+    }
+
+    @GetMapping("/account/{accountId}/books")
+    public List<Book> getUserBooks(@PathVariable("accountId") String accountId) {
+        return bookService.getUserBooks(accountId);
     }
 
     private URI getBookResourceURI(String id){
