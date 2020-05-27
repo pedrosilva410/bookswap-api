@@ -7,14 +7,16 @@ public class Book {
     private String location;
     private String[] genres;
     private String image;
+    private String user;
 
-    public Book(String id, String title, String description, String location, String[] genres, String image) {
+    public Book(String id, String title, String description, String location, String[] genres, String image, String user) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.location = location;
         this.genres = genres;
         this.image = image;
+        this.user = user;
     }
 
     public String getId() {
@@ -63,5 +65,13 @@ public class Book {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

@@ -17,7 +17,7 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public Book createBook(Book newBook){
+    public Book createBook(Book newBook, String userId){
 
         //create new book
         var entity = new BookEntity();
@@ -27,11 +27,12 @@ public class BookService {
         entity.setLocation(newBook.getLocation());
         entity.setGenres(newBook.getGenres());
         entity.setImage(newBook.getImage());
+        entity.setUser(userId);
 
 
         // save book
         var saveEntity = this.bookRepository.save(entity);
-        return new Book(saveEntity.getId(), saveEntity.getTitle(), saveEntity.getDescription(), saveEntity.getLocation(), saveEntity.getGenres(), saveEntity.getImage());
+        return new Book(saveEntity.getId(), saveEntity.getTitle(), saveEntity.getDescription(), saveEntity.getLocation(), saveEntity.getGenres(), saveEntity.getImage(), saveEntity.getUser());
     }
 
     public Book getBook(String id){
@@ -47,7 +48,18 @@ public class BookService {
         return books;
     }
 
+    public List<Book> getUserBooks(String accountId){
+        List<Book> books = new ArrayList<>();
+        var dbBooks = bookRepository.findAll();
+        for(BookEntity dbBook : dbBooks){
+            if(dbBook.getUser().equals(accountId)) {
+                books.add(mapFromBookEntity(dbBook));
+            }
+        }
+        return books;
+    }
+
     private Book mapFromBookEntity(BookEntity bookEntity){
-        return new Book(bookEntity.getId(), bookEntity.getTitle(), bookEntity.getDescription(), bookEntity.getLocation(), bookEntity.getGenres(), bookEntity.getImage());
+        return new Book(bookEntity.getId(), bookEntity.getTitle(), bookEntity.getDescription(), bookEntity.getLocation(), bookEntity.getGenres(), bookEntity.getImage(), bookEntity.getUser());
     }
 }

@@ -13,6 +13,7 @@ public class BookEntity {
     private String location;
     private String[] genres;
     private String image;
+    private String user;
 
     public String getId() {
         return id;
@@ -60,5 +61,13 @@ public class BookEntity {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }
