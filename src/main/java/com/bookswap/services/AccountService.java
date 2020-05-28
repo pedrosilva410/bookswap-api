@@ -23,6 +23,8 @@ public class AccountService {
         entity.setUserName(newAccount.getUserName());
         entity.setEmail(newAccount.getEmail());
         entity.setPassword(newAccount.getPassword());
+        entity.setBio(newAccount.getBio());
+        entity.setContact(newAccount.getContact());
 
         // save account
         var saveEntity = this.accountRepository.save(entity);

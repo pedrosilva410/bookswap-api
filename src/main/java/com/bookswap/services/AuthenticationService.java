@@ -22,12 +22,12 @@ public class AuthenticationService {
         AccountEntity accountEntity = accountRepository.findByUserName(userName);
         if(accountEntity!=null){
             if(accountEntity.getPassword().equals(password)){
-                return new Token(UUID.randomUUID().toString(), true);
+                return new Token(UUID.randomUUID().toString(), true, accountEntity.getId());
             } else {
-                return new Token(null, false);
+                return new Token(null, false, null);
             }
         } else{
-            return new Token(null, false);
+            return new Token(null, false, null);
         }
     }
 }
