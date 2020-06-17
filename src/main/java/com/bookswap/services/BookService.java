@@ -48,6 +48,19 @@ public class BookService {
         return books;
     }
 
+    public List<Book> getBooksByTitle( String title){
+        List<Book> books = new ArrayList<>();
+        var dbBooks = bookRepository.findAll();
+        for(BookEntity dbBook : dbBooks){
+            if(dbBook.getTitle().contains(title)) {
+                books.add(mapFromBookEntity(dbBook));
+            }
+        }
+        return books;
+    }
+
+
+
     public List<Book> getUserBooks(String accountId){
         List<Book> books = new ArrayList<>();
         var dbBooks = bookRepository.findAll();
