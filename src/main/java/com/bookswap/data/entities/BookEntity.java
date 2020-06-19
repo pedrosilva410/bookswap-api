@@ -11,7 +11,7 @@ public class BookEntity {
     private String title;
     private String description;
     private String location;
-    private String[] genres;
+    private String genres;
     private String image;
     private String user;
 
@@ -47,11 +47,11 @@ public class BookEntity {
         this.location = location;
     }
 
-    public String[] getGenres() {
+    public String getGenres() {
         return genres;
     }
 
-    public void setGenres(String[] genres) {
+    public void setGenres(String genres) {
         this.genres = genres;
     }
 

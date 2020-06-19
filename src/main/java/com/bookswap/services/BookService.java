@@ -35,6 +35,23 @@ public class BookService {
         return new Book(saveEntity.getId(), saveEntity.getTitle(), saveEntity.getDescription(), saveEntity.getLocation(), saveEntity.getGenres(), saveEntity.getImage(), saveEntity.getUser());
     }
 
+    /*public Book editBook(String bookId, Book newBookDetails){
+
+        Book storedBookDetails = getBook(bookId);
+
+        storedBookDetails.setTitle(newBookDetails.getTitle());
+        storedBookDetails.setDescription(newBookDetails.getDescription());
+        storedBookDetails.setGenres(newBookDetails.getGenres());
+        storedBookDetails.setLocation(newBookDetails.getLocation());
+
+        return storedBookDetails;
+    }*/
+
+    public String deleteBook(String bookId){
+        bookRepository.deleteById(bookId);
+        return "Successfully deleted the book";
+    }
+
     public Book getBook(String id){
         return bookRepository.findById(id).map(this::mapFromBookEntity).get();
     }
