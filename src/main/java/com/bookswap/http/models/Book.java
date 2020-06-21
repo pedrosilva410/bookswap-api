@@ -5,11 +5,11 @@ public class Book {
     private String title;
     private String description;
     private String location;
-    private String[] genres;
+    private String genres;
     private String image;
     private String user;
 
-    public Book(String id, String title, String description, String location, String[] genres, String image, String user) {
+    public Book(String id, String title, String description, String location, String genres, String image, String user) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -51,11 +51,11 @@ public class Book {
         this.location = location;
     }
 
-    public String[] getGenres() {
+    public String getGenres() {
         return genres;
     }
 
-    public void setGenres(String[] genres) {
+    public void setGenres(String genres) {
         this.genres = genres;
     }
 
