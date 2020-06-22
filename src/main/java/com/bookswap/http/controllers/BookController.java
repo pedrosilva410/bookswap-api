@@ -22,11 +22,11 @@ public class BookController {
         return ResponseEntity.created(getBookResourceURI(newBook.getId())).build();
     }
 
-    /*@PutMapping("/books/{bookId}")
+    @PutMapping("/books/{bookId}")
         public ResponseEntity<Void> editBook(@PathVariable("bookId") String bookId, @RequestBody Book editBook){
             var editedBook = bookService.editBook(bookId, editBook);
             return ResponseEntity.accepted().build();
-    }*/
+    }
 
     @DeleteMapping("/books/{bookId}")
     public ResponseEntity<Void> deleteBook(@PathVariable("bookId") String bookId) {

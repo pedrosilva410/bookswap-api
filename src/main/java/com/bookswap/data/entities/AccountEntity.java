@@ -14,6 +14,18 @@ public class AccountEntity {
     private String bio;
     private String contact;
 
+    public AccountEntity(String id, String userName, String email, String password, String bio, String contact) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.bio = bio;
+        this.contact = contact;
+    }
+
+    public AccountEntity() {
+    }
+
     public String getId() {
         return id;
     }

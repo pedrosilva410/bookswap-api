@@ -15,6 +15,19 @@ public class BookEntity {
     private String image;
     private String user;
 
+    public BookEntity(String id, String title, String description, String location, String genres, String image, String user) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.genres = genres;
+        this.image = image;
+        this.user = user;
+    }
+
+    public BookEntity() {
+    }
+
     public String getId() {
         return id;
     }
