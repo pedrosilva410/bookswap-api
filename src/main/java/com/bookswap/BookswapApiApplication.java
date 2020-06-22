@@ -21,5 +21,6 @@ public class BookswapApiApplication {
 				registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
 			}
 		};
+
 	}
 }
