@@ -35,17 +35,20 @@ public class BookService {
         return new Book(saveEntity.getId(), saveEntity.getTitle(), saveEntity.getDescription(), saveEntity.getLocation(), saveEntity.getGenres(), saveEntity.getImage(), saveEntity.getUser());
     }
 
-    /*public Book editBook(String bookId, Book newBookDetails){
+    public BookEntity editBook(String bookId, Book bookDetails){
 
         Book storedBookDetails = getBook(bookId);
 
-        storedBookDetails.setTitle(newBookDetails.getTitle());
-        storedBookDetails.setDescription(newBookDetails.getDescription());
-        storedBookDetails.setGenres(newBookDetails.getGenres());
-        storedBookDetails.setLocation(newBookDetails.getLocation());
+        storedBookDetails.setTitle(bookDetails.getTitle());
+        storedBookDetails.setDescription(bookDetails.getDescription());
+        storedBookDetails.setGenres(bookDetails.getGenres());
+        storedBookDetails.setLocation(bookDetails.getLocation());
 
-        return storedBookDetails;
-    }*/
+        BookEntity updateBook = mapFromBook(storedBookDetails);
+
+        bookRepository.save(updateBook);
+        return updateBook;
+    }
 
     public String deleteBook(String bookId){
         bookRepository.deleteById(bookId);
@@ -91,5 +94,9 @@ public class BookService {
 
     private Book mapFromBookEntity(BookEntity bookEntity){
         return new Book(bookEntity.getId(), bookEntity.getTitle(), bookEntity.getDescription(), bookEntity.getLocation(), bookEntity.getGenres(), bookEntity.getImage(), bookEntity.getUser());
+    }
+
+    private BookEntity mapFromBook(Book book){
+        return new BookEntity(book.getId(), book.getTitle(), book.getDescription(), book.getLocation(), book.getGenres(), book.getImage(), book.getUser());
     }
 }

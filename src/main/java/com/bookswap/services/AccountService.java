@@ -31,7 +31,7 @@ public class AccountService {
         return new Account(saveEntity.getId(), saveEntity.getUserName(), saveEntity.getEmail(), saveEntity.getPassword(), saveEntity.getBio(), saveEntity.getContact());
     }
 
-    /*public Account editAccount(String accountId, Account newAccountDetails){
+    public AccountEntity editAccount(String accountId, Account newAccountDetails){
 
         Account storedAccountDetails = getAccount(accountId);
 
@@ -41,8 +41,11 @@ public class AccountService {
         storedAccountDetails.setContact(newAccountDetails.getContact());
         storedAccountDetails.setPassword(newAccountDetails.getPassword());
 
-        return storedAccountDetails;
-    }*/
+        AccountEntity updateAccount = mapFromAccount(storedAccountDetails);
+
+        accountRepository.save(updateAccount);
+        return updateAccount;
+    }
 
     public Account getAccount(String id){
         return accountRepository.findById(id).map(this::mapFromAccountEntity).get();
@@ -50,5 +53,9 @@ public class AccountService {
 
     private Account mapFromAccountEntity(AccountEntity accountEntity){
         return new Account(accountEntity.getId(), accountEntity.getUserName(), accountEntity.getEmail(), null, accountEntity.getBio(), accountEntity.getContact());
+    }
+
+    private AccountEntity mapFromAccount(Account account){
+        return new AccountEntity(account.getId(), account.getUserName(), account.getEmail(), null, account.getBio(), account.getContact());
     }
 }

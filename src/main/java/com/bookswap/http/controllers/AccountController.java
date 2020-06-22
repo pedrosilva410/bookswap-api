@@ -27,11 +27,11 @@ public class AccountController {
         return accountService.getAccount(accountId);
     }
 
-    /*@PutMapping("/account/{accountId}")
+    @PutMapping("/account/{accountId}")
     public ResponseEntity<Void> editAccount(@PathVariable("accountId") String accountId, @RequestBody Account editAccount){
         var editedAccount = accountService.editAccount(accountId, editAccount);
         return ResponseEntity.accepted().build();
-    }*/
+    }
 
     private URI getAccountResourceURI(String id){
         return URI.create(String.format("/account/%s", id));
